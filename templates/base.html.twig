@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="icon" href="../img/logo_hianpe.png"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+		{# Run `composer require symfony/webpack-encore-bu															           and uncomment the following Encore helpers to start using Symfony UX #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app')}}
+
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app')}}
+
+		{% endblock %}
+	</head>
+	<body>
+		<div class="container py-3">
+			<nav class="navbar navbar-expand-lg navbar-light border-bottom">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="/"><img src="../img/logo_hianpe.png" alt="Smiley face" height="32" width="32"/></a>
+
+
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav ms-auto">
+							<li class="nav-item">
+								<a class="nav-link" href="/">Page d'accueil</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/article">Article</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/propos">À propos</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/contact">Contact</a>
+							</li>
+							{% if not app.user %}
+								<li class="nav-item">
+									<a class="nav-link" href="/connexion">Connexion</a>
+								</li>
+							{% else %}
+
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_logout')}}">Déconnexion</a>
+								</li>
+
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			{% if app.user %}
+				<div class="container mt-5 d-flex justify-content-center">
+					<div class="card p-3">
+						<h2 class="mb-0 mt-0">Pseudo :
+							{{ app.user.pseudo }}</h2>
+						<div class="d-flex align-items-center">
+							<div class="image">
+								<img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="205">
+							</div>
+
+						</div>
+						<button class="btn btn-sm btn-outline-primary w-100">Modifier le profil</button>
+					</div>
+				</div>
+			{% endif %}
+
+		</div>
+
+		<div class="container py-3"> {% block body %}{% endblock %}
+
+
+			</div>
+
+			<div
+				class="container py-3">
+				<!-- Footer -->
+				<footer
+					class="pt-4 my-md-5 pt-md-5 border-top">
+
+					<!-- Footer Links -->
+					<div
+						class="container-fluid text-center text-md-left">
+
+						<!-- Grid row -->
+						<div
+							class="row">
+
+							<!-- Grid column -->
+							<div
+								class="col-md-6 mt-md-0 mt-3">
+
+								<!-- Content -->
+								<h5 class="text-uppercase">Footer Content</h5>
+								<p>Here you can use rows and columns to organize your footer content.</p>
+
+							</div>
+							<!-- Grid column -->
+
+							<hr
+							class="clearfix w-100 d-md-none pb-3">
+
+							<!-- Grid column -->
+							<div
+								class="col-md-3 mb-md-0 mb-3">
+
+								<!-- Links -->
+								<h5 class="text-uppercase">Links</h5>
+
+								<ul class="list-unstyled">
+									<li>
+										<a href="#!">Link 1</a>
+									</li>
+									<li>
+										<a href="#!">Link 2</a>
+									</li>
+									<li>
+										<a href="#!">Link 3</a>
+									</li>
+									<li>
+										<a href="#!">Link 4</a>
+									</li>
+								</ul>
+
+							</div>
+							<!-- Grid column -->
+
+							<!-- Grid column -->
+							<div
+								class="col-md-3 mb-md-0 mb-3">
+
+								<!-- Links -->
+								<h5 class="text-uppercase">Links</h5>
+
+								<ul class="list-unstyled">
+									<li>
+										<a href="#!">Link 1</a>
+									</li>
+									<li>
+										<a href="#!">Link 2</a>
+									</li>
+									<li>
+										<a href="#!">Link 3</a>
+									</li>
+									<li>
+										<a href="#!">Link 4</a>
+									</li>
+								</ul>
+
+							</div>
+							<!-- Grid column -->
+
+						</div>
+						<!-- Grid row -->
+
+					</div>
+					<!-- Footer Links -->
+
+					<!-- Copyright -->
+					<div class="footer-copyright text-center py-3">© 2021 Copyright
+					</div>
+					<!-- Copyright -->
+
+				</footer>
+			</div>
+		</body>
+	</html>

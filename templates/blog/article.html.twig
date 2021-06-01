@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Articles
+{% endblock %}
+
+{% block body %}
+
+	<h1>Articles</h1>
+
+	<div class="row row-cols-1 row-cols-md-3 g-4">
+		{% for article in articles %}
+			<div class="col">
+				<div class="card">
+					<img src="{{ article.image }}" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">{{ article.title }}</h5>
+						{{ article.content | raw }}
+						<p class="card-text">
+							<small class="text-muted">Publié le
+								{{ article.createdAt | date('d/m/Y')}}</small>
+						</p>
+						<a href="{{ path('blog', {'id':article.id})}}" class="btn btn-primary">Lire la suite</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

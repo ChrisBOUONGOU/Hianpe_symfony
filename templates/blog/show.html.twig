@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+	{{ article.title }}
+{% endblock %}
+
+{% block body %}
+	<div class="article-header p-3 pb-md-4 mx-auto text-center">
+		<h1 class="display-4 fw-normal">{{ article.title }}</h1>
+		<img src="{{ article.image }}" class="card-img-top" alt="...">
+		<p class="fs-5 text-muted">{{ article.content | raw }}</p>
+		<p class="fs-5 text-muted">
+			<small class="text-muted">Publié le
+				{{ article.createdAt | date('d/m/Y')}}</small>
+		</p>
+	</div>
+{% endblock %}

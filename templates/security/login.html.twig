@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Connexion
+{% endblock %}
+
+{% block body %}
+	<form action="{{ path('app_login')}}" method="POST" class="formu">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+
+		<h1 class="h3 mb-3 font-weight-normal">Page de connexion</h1>
+		<div class="form-group">
+			<div class="col-sm-12">
+				<label for="email">Email</label>
+				<input type="email" placeholder="Email" class="form-control " autocomplete="off" required name="_username"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-12">
+				<label for="password">Mot de passe</label>
+				<input type="password" placeholder="Mot de passe" class="form-control " autocomplete="off" required name="_password"/>
+			</div>
+		</div>
+
+
+		<br/>
+		<div class="form-group" id="button">
+
+
+			<button type="submit" class="btn btn-warning">Connexion</button>
+
+		</div>
+		<br/>
+		<div class="form-group" id="txt">
+
+			<a href="#">Mot de passe oublié ?</a>
+
+		</div>
+
+		<br/>
+		<div class="form-group" id="button">
+
+			<span>Pas membre ?
+			</span>
+			<a class="btn btn-danger" href="/inscription">Inscription</a>
+		</div>
+	</form>
+{% endblock %}
